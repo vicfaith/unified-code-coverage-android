@@ -4,7 +4,7 @@ apply plugin: 'jacoco'
 task jacocoTestReport(type: JacocoReport, dependsOn: ['testDevDebugUnitTest']) {
 
     reports {
-        xml.enabled = true
+        xml.enabled = false
         html.enabled = true
     }
 
