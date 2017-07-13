@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'jacoco'
 
-task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDevDebugUnitTest']) {
 
     reports {
         xml.enabled = true
@@ -15,7 +15,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
     sourceDirectories = files([mainSrc])
     classDirectories = files([debugTree])
     executionData = fileTree(dir: project.buildDir, includes: [
-            'jacoco/testDebugUnitTest.exec', 'outputs/code-coverage/connected/*coverage.ec'
+            'jacoco/testDevDebugUnitTest.exec', 'outputs/code-coverage/connected/*coverage.ec'
     ])
 }
 
@@ -31,6 +31,13 @@ android {
         versionName '1.0'
 
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+    }
+
+    productFlavors {
+        dev {
+        }
+        prod {
+        }
     }
 
     buildTypes {
